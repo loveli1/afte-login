@@ -94,46 +94,151 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-black">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-16 text-yellow-400 glow-effect">Contact Us</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-gray-900 rounded-lg shadow-xl p-8">
-                    <h3 class="text-2xl font-bold mb-4 text-yellow-400">Get In Touch</h3>
-                    <div class="space-y-4 text-blue-300">
-                        <p>📞 Phone: 0723283588</p>
-                        <p>📍 Address: Ranatetikanda panagamuwa, kurunegala</p>
-                        <p>✉️ Email: sujithelectro@gmail.com</p>
-                        <div class="flex space-x-4">
-                            <a href="https://wa.me/94723283588" class="text-yellow-400 hover:text-yellow-300">WhatsApp</a>
-                            <a href="https://www.youtube.com/@gayantha-lochana" class="text-yellow-400 hover:text-yellow-300">YouTube</a>
-                            <a href="https://web.facebook.com/sujith.shantha.5" class="text-yellow-400 hover:text-yellow-300">Facebook</a>
-                        </div>
+
+<!-- Wather and colour code  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Lanka Info Hub</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #85c1e9, #f0f3f4);
+            color: #2c3e50;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background: #2980b9;
+            color: white;
+        }
+        .container {
+            padding: 20px;
+        }
+        .section {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        iframe {
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+        .resistor-code {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .resistor-band {
+            display: inline-block;
+            width: 30px;
+            height: 100px;
+            margin-right: 10px;
+            border: 1px solid rgb(190, 12, 12);
+            text-align: center;
+            font-size: 12px;
+            padding: 5px;
+        }
+        .resistor-band select {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sri Lanka Info Hub</h1>
+        <p id="greeting"></p>
+    </header>
+
+    <div class="container">
+        <!-- Live Weather Section -->
+        <div class="section" id="weather">
+            <h2>Live Weather in Sri Lanka</h2>
+            <p id="weather-info">Loading weather data...</p>
+        </div>
+
+        <!-- Map Section -->
+        <div class="section">
+            <h2>Sri Lanka Map</h2>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1010997.3197104684!2d79.6958479965459!3d7.873054356622738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae3a88acb6b64c7%3A0x8f1c97da20e4f9bb!2sSri%20Lanka!5e0!3m2!1sen!2slk!4v1693329159483!5m2!1sen!2slk"
+                width="400"
+                height="450"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+       
+
+    <script>
+        // Dynamic Greeting
+        function updateGreeting() {
+            const hour = new Date().getHours();
+            const greeting = hour < 12 ? "Good Morning" :
+                hour < 18 ? "Good Afternoon" : "Good Night";
+            document.getElementById("greeting").textContent = greeting + "!";
+        }
+
+        }
+
+        // Weather Fetch (requires API)
+        async function fetchWeather() {
+            const apiKey = "8b63169fe7f5862f2e4d522eb9dfad24"; // Replace with a valid API key
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=Colombo,LK&units=metric&appid=${apiKey}`;
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                document.getElementById("weather-info").textContent =
+                    `Temperature: ${data.main.temp}°C, ${data.weather[0].description}`;
+            } catch (error) {
+                document.getElementById("weather-info").textContent = "Failed to load weather data.";
+            }
+        }
+
+        fetchWeather();
+    </script>
+
+
+ <!-- Contact -->
+ <section id="contact" class="py-20 bg-black">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-16 text-yellow-400 glow-effect">Contact Us</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-gray-900 rounded-lg shadow-xl p-8">
+                <h3 class="text-2xl font-bold mb-4 text-yellow-400">Get In Touch</h3>
+                <div class="space-y-4 text-blue-300">
+                    <p>📞 Phone: 0723283588</p>
+                    <p>📍 Address: Ranatetikanda panagamuwa, kurunegala</p>
+                    <p>✉️ Email: sujithelectro@gmail.com</p>
+                    <div class="flex space-x-4">
+                        <a href="https://wa.me/94723283588" class="text-yellow-400 hover:text-yellow-300">WhatsApp</a>
+                        <a href="https://www.youtube.com/@gayantha-lochana" class="text-yellow-400 hover:text-yellow-300">YouTube</a>
+                        <a href="https://web.facebook.com/sujith.shantha.5" class="text-yellow-400 hover:text-yellow-300">Facebook</a>
                     </div>
                 </div>
-                <div class="bg-gray-900 rounded-lg shadow-xl p-8">
-                    <h3 class="text-2xl font-bold mb-4 text-yellow-400">Send Message</h3>
-                    <form class="space-y-4">
-                        <input type="text" placeholder="Name" class="w-full p-2 border rounded bg-gray-800 text-white border-gray-700">
-                        <input type="email" placeholder="Email" class="w-full p-2 border rounded bg-gray-800 text-white border-gray-700">
-                        <textarea placeholder="Message" class="w-full p-2 border rounded bg-gray-800 text-white border-gray-700 h-32"></textarea>
-                        <button class="button-primary w-full px-6 py-2 rounded-lg text-black font-bold">
-                            Send Message
-                        </button>
-                    </form>
-                </div>
+            </div>
+            <div class="bg-gray-900 rounded-lg shadow-xl p-8">
+                <h3 class="text-2xl font-bold mb-4 text-yellow-400">Send Message</h3>
+                <form class="space-y-4">
+                    <input type="text" placeholder="Name" class="w-full p-2 border rounded bg-gray-800 text-white border-gray-700">
+                    <input type="email" placeholder="Email" class="w-full p-2 border rounded bg-gray-800 text-white border-gray-700">
+                    <textarea placeholder="Message" class="w-full p-2 border rounded bg-gray-800 text-white border-gray-700 h-32"></textarea>
+                    <button class="button-primary w-full px-6 py-2 rounded-lg text-black font-bold">
+                        Send Message
+                    </button>
+                </form>
             </div>
         </div>
-    </section>
-
-    <!-- ChatBot Button -->
-    <a href="https://loveli1.github.io/Chat-Bot/" target="_blank" class="chat-bot-button">
-        <div class="chat-bot-icon">
-            <i class="fas fa-robot text-2xl text-black"></i>
-        </div>
-    </a>
-
-    <script src="script.js"></script>
+    </div>
+</section> 
 </body>
 </html>
